@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% load staticfiles %}
+
+<body>
+  <p>您現在的位置在{{ path }}</p>
+  {% block content %}
+  <div class="container">
+
+
+    <h2>所有參賽隊伍</h2>
+	<table border="1" cellpadding="1" cellspacing="1">
+	  <th> No. </th><th> 隊伍名稱 </th><th> 隊員1 </th><th> 隊員2 </th><th> 部門 </th><th> 賽程1 </th><th> 賽程2 </th><th nowrap="nowrap"> 賽程3 </th><th nowrap="nowrap"> 賽程4 </th><th nowrap="nowrap"> 賽程5 </th><th nowrap="nowrap"> 賽程6 </th><th nowrap="nowrap"> 賽程7 </th>
+	  {% for t in tea %}
+	    <tr>
+		  <td nowrap="nowrap"> {{t.tid}} </td>
+		  <td nowrap="nowrap"> {{t.tname}} </td>
+		  <td nowrap="nowrap"> {{t.tmember1}} </td>
+		  <td nowrap="nowrap"> {{t.tmember2}} </td>
+		  <td nowrap="nowrap"> {{t.tdep}} </td>
+		  {% if t.tgame1 is not null %}
+		    <td nowrap="nowrap"> {{t.tgame1}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  {% if t.tgame2 is not null %}
+		    <td nowrap="nowrap"> {{t.tgame2}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  
+		  {% if t.tgame3 is not null %}
+		    <td nowrap="nowrap"> {{t.tgame3}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  {% if t.tgame4 is not null %}
+		  <td nowrap="nowrap"> {{t.tgame4}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  {% if t.tgame5 is not null %}
+		  <td nowrap="nowrap"> {{t.tgame5}}</td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  {% if t.tgame6 is not null %}
+		  <td nowrap="nowrap"> {{t.tgame6}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		  {% if t.tgame7 is not null %}
+		  <td nowrap="nowrap"> {{t.tgame7}} </td>
+		  {% else %}
+		    <td> </td>
+		  {% endif %}
+		</tr>
+      {% endfor %}
+	</table>
+
+
+
+
+  </div>
+
+  {% endblock %}
+  <!--<!doctype html>
+  <html>
+
+  <head>
+    <title> Menu </title>
+    <meta charset='utf-8'>
+  </head>
+
+  <body>
+    <p>本餐廳共有{{ foods|length }}道菜</p>
+    {% for food in foods %}
+    <h3>第{{ forloop.counter }}道食物</h3>
+    <ul>
+      <li> 食物的名字是:{{ food.name }} </li>
+      <li> 食物的價格是:{{ food.price }} </li>
+      <li> 食物說明: {{ food.comment }} </li>
+      <li> 食物會辣？ {{ food.is_spicy }} </li>
+    </ul>
+    {% empty %}
+    <p>本餐廳啥都沒賣！</p>
+    {% endfor %}
+  </body>
+
+  </html>

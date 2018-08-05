@@ -1,0 +1,275 @@
+<head>
+  <meta charset="utf-8" />
+  <title>註冊DBSSports</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      background: url(http://www.twitrcovers.com/wp-content/uploads/2014/11/Stadium-s.jpg) fixed;
+      background-size: cover;
+      padding: 0;
+      margin: 0;
+      background-position: center center;
+      background-attachment: fixed;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 99;
+    }
+
+    p.form-title {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #FFFFFF;
+      margin-top: 5%;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    form {
+      width: 250px;
+      margin: 0 auto;
+    }
+
+    form.login input[type="id"],
+    form.login input[type="name"],
+      {
+      width: 100%;
+      margin: 0;
+      padding: 5px 10px;
+      background: 0;
+      border: 0;
+      border-bottom: 1px solid rgb(20, 167, 212);
+      outline: 0;
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      color: rgb(10, 88, 231);
+      outline: 0;
+    }
+
+    form.login input[type="submit"] {
+      width: 100%;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 16px;
+      outline: 0;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    form.login input[type="submit"]:hover {
+      transition: background-color 0.5s ease;
+    }
+
+    form.login .homealready {
+      float: left;
+      width: 100%;
+      margin: 10px 0 0 0;
+    }
+
+    form.login .backtohome {
+      min-height: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    form.login .already-have-account {
+      min-height: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    form.login label,
+    form.login a {
+      font-size: 12px;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+
+    form.login a {
+      transition: color 0.5s ease;
+    }
+
+    form.login a:hover {
+      color: #2ecc71;
+    }
+
+    .pr-wrap {
+      width: 100%;
+      height: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: none;
+    }
+
+    .show-pass-reset {
+      display: block !important;
+    }
+
+    .pass-reset {
+      margin: 0 auto;
+      width: 250px;
+      position: relative;
+      margin-top: 22%;
+      z-index: 999;
+      background: #FFFFFF;
+      padding: 20px 15px;
+    }
+
+    .pass-reset label {
+      font-size: 12px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .pass-reset input[type="email"] {
+      width: 100%;
+      margin: 5px 0 0 0;
+      padding: 5px 10px;
+      background: 0;
+      border: 0;
+      border-bottom: 1px solid #000000;
+      outline: 0;
+      font-style: italic;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      color: #000000;
+      outline: 0;
+    }
+
+    .pass-reset input[type="submit"] {
+      width: 100%;
+      border: 0;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 10px;
+      outline: 0;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    .pass-reset input[type="submit"]:hover {
+      transition: background-color 0.5s ease;
+    }
+
+    .posted-by {
+      position: absolute;
+      bottom: 26px;
+      margin: 0 auto;
+      color: #FFF;
+      background-color: rgba(0, 0, 0, 0.66);
+      padding: 10px;
+      left: 45%;
+    }
+  </style>
+  <script type="text/javascript"> $(document).ready(function () {
+      $('.goback').click(function (event) {
+        $(".pr-wrap").toggleClass("show-pass-reset");
+      });
+
+      $('.already-have').click(function (event) {
+        $(".pr-wrap").toggleClass("show-pass-reset");
+      });
+
+      $('.pass-reset-submit').click(function (event) {
+        $(".pr-wrap").removeClass("show-pass-reset");
+      });
+    });</script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap">
+          <p class="form-title">註冊</p>
+          <form class="login" action="/register.html" method="POST" name="form1"> <!-- MOD !-->
+		    {% csrf_token %}
+			<!--
+			<table border="1" cellspacing="1" cellpadding="4" color = "white">
+			  <tr><th>員工編號</th><td>{{postform.mid}}</td></tr>
+			  <tr><th>姓名</th><td>{{postform.mName}}</td></tr>
+			  <tr><th>部門</th><td>{{postform.mDepartment}}</td></tr>
+			  <tr><th>電子信箱</th><td>{{postform.mEmail}}</td></tr>
+			  <tr><th>密碼</th><td>{{postform.mPassword}}</td></tr>
+			  !-->
+			 
+			<p><font color="white">員編 </font>{{postform.mid}}</p>
+			<p><font color="white">姓名 </font>{{postform.mName}}</p>
+			<p><font color="white">部門 </font>{{postform.mDepartment}}</p>
+			<p><font color="white">信箱 </font>{{postform.mEmail}}</p>
+			<p><font color="white">密碼 </font>{{postform.mPassword}}</p>
+            <br>
+			
+			  
+			<!--
+            <p>
+              <input id='id' type="text" name="id" placeholder="員工編號" />
+            </p>
+            <p>
+              <input id='name' type="text" name="name" placeholder="姓名" />
+            </p>
+            <p>
+              <input id='department' type="text" name="department" placeholder="部門" />
+            </p>
+            
+            <p>
+              <input id='email' type="text" name="email" placeholder="信箱" />
+            </p>
+            
+            <p>
+              <input id='password' type="id" name="password" placeholder="密碼" />
+            </p>
+            <br>
+			!-->
+            
+            <input type="submit" value="註冊" class="btn btn-success btn-sm" />
+			<span style="color:red">{{message}}</span>
+            <div class="homealready">
+              <div class="row">
+                <div class="col-md-6 backtohome">
+                  <a href="/index" class="goback">回首頁</a>
+                </div>
+                <div class="col-md-6 already-have-account">
+                  <a href="/login" class="already-have">已經有帳號了</a>
+                </div>
+              </div>
+            </div>
+			
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
