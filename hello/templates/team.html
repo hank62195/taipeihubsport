@@ -1,88 +1,66 @@
-{% extends "base.html" %} {% load staticfiles %}
+{% extends "base.html" %} {% load staticfiles %} {% block title %}參賽隊伍{% endblock %} {% block content %}
+<style>
+    body {
+        min-height: 100vh;
+        background: url(https://picjumbo.com/wp-content/uploads/young-woman-with-sexy-body-running-workout_free_stock_photos_picjumbo_HNCK1868-1570x1047.jpg) fixed;
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+</style>
 
-<body>
-  <p>您現在的位置在{{ path }}</p>
-  {% block content %}
-  <div class="container">
-
-
-    <h2>所有參賽隊伍</h2>
-	<table border="1" cellpadding="1" cellspacing="1">
-	  <th> No. </th><th> 隊伍名稱 </th><th> 隊員1 </th><th> 隊員2 </th><th> 部門 </th><th> 賽程1 </th><th> 賽程2 </th><th nowrap="nowrap"> 賽程3 </th><th nowrap="nowrap"> 賽程4 </th><th nowrap="nowrap"> 賽程5 </th><th nowrap="nowrap"> 賽程6 </th><th nowrap="nowrap"> 賽程7 </th>
-	  {% for t in tea %}
-	    <tr>
-		  <td nowrap="nowrap"> {{t.tid}} </td>
-		  <td nowrap="nowrap"> {{t.tname}} </td>
-		  <td nowrap="nowrap"> {{t.tmember1}} </td>
-		  <td nowrap="nowrap"> {{t.tmember2}} </td>
-		  <td nowrap="nowrap"> {{t.tdep}} </td>
-		  {% if t.tgame1 is not null %}
-		    <td nowrap="nowrap"> {{t.tgame1}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  {% if t.tgame2 is not null %}
-		    <td nowrap="nowrap"> {{t.tgame2}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  
-		  {% if t.tgame3 is not null %}
-		    <td nowrap="nowrap"> {{t.tgame3}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  {% if t.tgame4 is not null %}
-		  <td nowrap="nowrap"> {{t.tgame4}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  {% if t.tgame5 is not null %}
-		  <td nowrap="nowrap"> {{t.tgame5}}</td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  {% if t.tgame6 is not null %}
-		  <td nowrap="nowrap"> {{t.tgame6}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		  {% if t.tgame7 is not null %}
-		  <td nowrap="nowrap"> {{t.tgame7}} </td>
-		  {% else %}
-		    <td> </td>
-		  {% endif %}
-		</tr>
-      {% endfor %}
-	</table>
+<div class="container" align=center>
 
 
+    <h2>參賽隊伍與賽況一覽表</h2>
+    <table style="border:3px #cccccc solid;" border="1" cellpadding="1" cellspacing="1">
+        <th style="text-align: center" nowrap="nowrap" width=250>NO. </th>
+        <th style="text-align: center" nowrap="nowrap" width=250>隊伍名稱</th>
+        <th style="text-align: center" nowrap="nowrap" width=250>隊員名稱1</th>
+        <th style="text-align: center" nowrap="nowrap" width=250>隊員名稱2</th>
+        <th style="text-align: center" nowrap="nowrap" width=250>部門</th>
+        {% for t in team %}
+        <tr bgcolor='{% cycle "#ffccff" "ccffcc" %}'>
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tId}}</td>
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tName}}</td>
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tMember1}}</td>
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tMember2}}</td>
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tDepartment}}</td>
+            {% if t.tGame1 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame1}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame2 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame2}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame3 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame3}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame4 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame4}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame5 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame5}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame6 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame6}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %} {% if t.tGame7 is not null %}
+            <td style="text-align: center" nowrap="nowrap" width=250>{{t.tGame7}}</td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
 
+</div>
 
-  </div>
-
-  {% endblock %}
-  <!--<!doctype html>
-  <html>
-
-  <head>
-    <title> Menu </title>
-    <meta charset='utf-8'>
-  </head>
-
-  <body>
-    <p>本餐廳共有{{ foods|length }}道菜</p>
-    {% for food in foods %}
-    <h3>第{{ forloop.counter }}道食物</h3>
-    <ul>
-      <li> 食物的名字是:{{ food.name }} </li>
-      <li> 食物的價格是:{{ food.price }} </li>
-      <li> 食物說明: {{ food.comment }} </li>
-      <li> 食物會辣？ {{ food.is_spicy }} </li>
-    </ul>
-    {% empty %}
-    <p>本餐廳啥都沒賣！</p>
-    {% endfor %}
-  </body>
-
-  </html>
+{% endblock %}
