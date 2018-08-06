@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User #New Added
 
 from hello import models
-from hello import Team
+from .models import Team
 #from ppb.models import member #New Added
 #from ppb.models import team #New Added
 
