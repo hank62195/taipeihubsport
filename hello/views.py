@@ -31,7 +31,7 @@ def team(request): #顯示資料表
     team = Team()
     team.save()
     team = Team.objects.all().order_by('tId') #New Added
-    return render(request, 'team.html', {'team': team}) #New Added
+    return render(request, 'team.html', {'teams': teams}) #New Added
 
 def game(request): #下注列表
     return render(request, 'game.html', locals()) #New Added
