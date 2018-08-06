@@ -27,9 +27,11 @@ def db(request): #顯示資料表
     mem = member.objects.all().order_by('mid') #New Added
     return render(request, 'db.html', locals()) #New Added
 
-def teamlist(request): #顯示資料表
-    tea = team.objects.all().order_by('tid') #New Added
-    return render(request, 'team.html', locals()) #New Added
+def team(request): #顯示資料表
+    team = Team()
+    team.save()
+    team = Team.objects.all().order_by('tId') #New Added
+    return render(request, 'team.html', {'team': team}) #New Added
 
 def game(request): #下注列表
     return render(request, 'game.html', locals()) #New Added
