@@ -31,7 +31,7 @@ def db(request): #顯示資料表
 def team(request): #顯示資料表
     team = Team()
     team.save()
-    team = Team.objects.all().order_by('id') #New Added
+    team = Team.objects.all().order_by('tId') #New Added
     return render(request, 'team.html', {'team': team}) #New Added
 
 def game(request): #下注列表
