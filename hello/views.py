@@ -30,7 +30,7 @@ def db(request): #顯示資料表
 
 def team(request): #顯示資料表
     team = Team()
-    team.save()
+    team.save
     team = Team.objects.all().order_by('tId') #New Added
     return render(request, 'team.html', {'team': team}) #New Added
 
