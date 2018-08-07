@@ -8,6 +8,8 @@ from django.contrib.auth.models import User #New Added
 
 from hello import models
 from .models import Team
+from hello.form import RegisterForm 
+from hello.form import LoginForm
 #from ppb.models import member #New Added
 #from ppb.models import team #New Added
 
@@ -43,24 +45,24 @@ def register(request): #註冊
         postform = RegisterForm(request.POST)
         if postform.is_valid():
             
-            mid = postform.cleaned_data['mid']
+            mId = postform.cleaned_data['mId']
             mName = postform.cleaned_data['mName']
             mDepartment = postform.cleaned_data['mDepartment']
             mEmail = postform.cleaned_data['mEmail']
             mPassword = postform.cleaned_data['mPassword']
 
             try:
-                m = member.objects.get(mid=mid)
+                m = Member.objects.get(mId=mId)
             except:
                 m = None
 
             if m!= None:
-                message = '員編 ' + m.mid + '已註冊過!'
+                message = '員編 ' + m.mId + '已註冊過!'
             else:
-                unit = member.objects.create(mid =mid, mName = mName, mDepartment= mDepartment,
+                unit = Member.objects.create(mId =mId, mName = mName, mDepartment= mDepartment,
                                      mEmail = mEmail, mPassword= mPassword)
                 unit.save()
-                user = User.objects.create_user(mid,mEmail,mPassword) #同時寫入django內建使用者名單
+                user = User.objects.create_user(mId,mEmail,mPassword) #同時寫入django內建使用者名單
                 user.first_name = mName
                 user.is_staff = False
                 user.save()
