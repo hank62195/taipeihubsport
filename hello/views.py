@@ -52,7 +52,6 @@ def register(request): #註冊
             mPassword = postform.cleaned_data['mPassword']
 
             try:
-                m = Member()
                 m = Member.objects.get(mId=mId)
             except:
                 m = None
